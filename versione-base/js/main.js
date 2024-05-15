@@ -22,20 +22,54 @@ const images = [
         text: 'Marvel\'s Avengers is an epic, third-person, action-adventure game that combines an original, cinematic story with single-player and co-operative gameplay.',
     }]
 
+let active = 0;
+
 let divpadre = document.querySelector('.items')
-const imgSpace = document.querySelector('.item')
-const img = document.createElement('img')
-imgSpace.append(img)
+let next = document.querySelector('.next')
+// const imgSpace = document.querySelector('.item')
+// const img = document.createElement('img')
+// imgSpace.append(img)
+for (let i = 0; i < images.length; i++) {
 
-divpadre.addEventListener('click', function (e) {
-    let pulsante = e.target;
-    if (pulsante.className === 'prev') {
-        console.log('hai cliccato prima')
+    let item = document.createElement('div') // <div></div>
+    item.classList.add('item')
 
-    } else if (pulsante.className === 'next') {
-        console.log('hai cliccato next')
+    // image
+    const img = document.createElement('img'); // <img />
+    img.src = images[i].image;
+    item.append(img)
+
+    // titolo
+
+    // testo
+
+    divpadre.append(item)
+}
+
+// settare la prima slide come active
+
+
+document.querySelectorAll('.item')[active].classList.add('active')
+
+next.addEventListener('click', function () {
+    document.querySelectorAll('.item')[active].classList.remove('active')
+    active++
+    if (active === images.length - 1) {
+        active = 0
     }
+    document.querySelectorAll('.item')[active].classList.add('active')
+})
 
-    console.log(pulsante)
+// divpadre.addEventListener('click', function (e) {
+//     let pulsante = e.target;
+//     if (pulsante.className === 'prev') {
+//         console.log('hai cliccato prima')
 
-}) 
+
+//     } else if (pulsante.className === 'next') {
+//         console.log('hai cliccato next')
+//     }
+
+//     console.log(pulsante)
+
+// }) 
