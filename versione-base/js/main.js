@@ -26,6 +26,7 @@ let active = 0;
 
 let divpadre = document.querySelector('.items')
 let next = document.querySelector('.next')
+let prev = document.querySelector('.prev')
 // const imgSpace = document.querySelector('.item')
 // const img = document.createElement('img')
 // imgSpace.append(img)
@@ -54,8 +55,16 @@ document.querySelectorAll('.item')[active].classList.add('active')
 next.addEventListener('click', function () {
     document.querySelectorAll('.item')[active].classList.remove('active')
     active++
-    if (active === images.length - 1) {
+    if (active === images.length) {
         active = 0
+    }
+    document.querySelectorAll('.item')[active].classList.add('active')
+})
+prev.addEventListener('click', function () {
+    document.querySelectorAll('.item')[active].classList.remove('active')
+    active--
+    if (active === -1) {
+        active = 4
     }
     document.querySelectorAll('.item')[active].classList.add('active')
 })
